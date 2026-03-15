@@ -4,11 +4,13 @@
 
 #include <iostream>
 #include <cstdlib>
+#include "ToDoList.h"
 using namespace std;
 int main() {
+    toDoList();
     int guess;
     srand(time(0));
-    int secret = rand() % 100+1;
+    int secret = rand() % 10+1;
     cout << "Guess a number!" << endl;
     while (guess != secret) {
         cin >> guess;
