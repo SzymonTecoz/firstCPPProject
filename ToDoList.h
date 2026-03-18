@@ -6,6 +6,20 @@
 #define FIRSTCPPPROJECT_TODOLIST_H
 
 #pragma once
-void toDoList();
+#include <vector>
+#include <string>
+
+
+class toDoList {
+    private:
+        std::vector<std::string> tasks;
+    public:
+        void load();
+        void save();
+
+        void showTasks();
+        void addTask();
+        void removeTask();
+};
 
 #endif //FIRSTCPPPROJECT_TODOLIST_H

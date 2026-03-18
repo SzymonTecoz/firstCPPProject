@@ -5,55 +5,47 @@
 #include <vector>
 #include <string>
 #include "FileManager.h"
+#include "ToDoList.h"
 
 
-void toDoList() {
-    std::vector<std::string> tasks;
+void toDoList::load() {
     loadTasks(tasks);
+}
 
-    int choice;
+void toDoList::save() {
+    saveTasks(tasks);
+}
 
-    while (true) {
-        std::cout << "\n 1. Show tasks \n";
-        std::cout << "\n 2. Add task \n";
-        std::cout << "\n 3. Remove task \n";
-        std::cout << "\n 4. Exit \n";
-        std::cout << "\n Enter your choice : ";
+void toDoList::showTasks() {
 
-        std::cin >> choice;
+    std::cout << "\nYour tasks:\n";
 
-        if (choice == 1) {
-            std::cout << "\n Your tasks: \n";
+    for (int i = 0; i < tasks.size(); i++) {
+        std::cout << i + 1 << ". " << tasks[i] << std::endl;
+    }
+}
 
-            for (int i = 0; i < tasks.size(); i++) {
-                std::cout << i + 1 << ". " << tasks[i] << std::endl;
+void toDoList::addTask() {
 
-            }
-        }
-        else if (choice == 2) {
-            std::string task;
+    std::string task;
 
-            std::cout << "\n Enter task : ";
-            std::cin.ignore();
-            getline(std::cin, task);
-            tasks.push_back(task);
-            saveTasks(tasks);
-            std::cout << "\n Task added." << std::endl;
+    std::cout << "Enter task: ";
+    std::cin.ignore();
+    getline(std::cin, task);
 
-        }
-        else if (choice == 3) {
-            int index;
-            std::cout << "\n Enter task number: ";
-            std::cin >> index;
+    tasks.push_back(task);
 
-            if (index > 0 && index <= tasks.size()) {
-                tasks.erase(tasks.begin() + index - 1);
-                saveTasks(tasks);
-                std::cout << "\n Task removed!\n" << std::endl;
-            }
-        }
-        else if (choice == 4) {
-            break;
-        }
+    save();
+}
+
+void toDoList::removeTask() {
+    int index;
+
+    std::cout << "Enter task number: ";
+    std::cin >> index;
+
+    if (index > 0 && index <= tasks.size()) {
+        tasks.erase(tasks.begin() + index - 1);
+        save();
     }
 }
