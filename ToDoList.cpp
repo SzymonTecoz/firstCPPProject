@@ -5,47 +5,46 @@
 #include <vector>
 #include <string>
 
-using namespace std;
 
 void toDoList() {
-    vector<string> tasks;
+    std::vector<std::string> tasks;
     int choice;
 
     while (true) {
-        cout << "\n 1. Show tasks \n";
-        cout << "\n 2. Add task \n";
-        cout << "\n 3. Remove task \n";
-        cout << "\n 4. Exit \n";
-        cout << "\n Enter your choice : ";
+        std::cout << "\n 1. Show tasks \n";
+        std::cout << "\n 2. Add task \n";
+        std::cout << "\n 3. Remove task \n";
+        std::cout << "\n 4. Exit \n";
+        std::cout << "\n Enter your choice : ";
 
-        cin >> choice;
+        std::cin >> choice;
 
         if (choice == 1) {
-            cout << "\n Your tasks: \n";
+            std::cout << "\n Your tasks: \n";
 
             for (int i = 0; i < tasks.size(); i++) {
-                cout << i + 1 << ". " << tasks[i] << endl;
+                std::cout << i + 1 << ". " << tasks[i] << std::endl;
 
             }
         }
         else if (choice == 2) {
-            string task;
+            std::string task;
 
-            cout << "\n Enter task : ";
-            cin.ignore();
-            getline(cin, task);
+            std::cout << "\n Enter task : ";
+            std::cin.ignore();
+            getline(std::cin, task);
             tasks.push_back(task);
-            cout << "\n Task added." << endl;
+            std::cout << "\n Task added." << std::endl;
 
         }
         else if (choice == 3) {
             int index;
-            cout << "\n Enter task number: ";
-            cin >> index;
+            std::cout << "\n Enter task number: ";
+            std::cin >> index;
 
             if (index > 0 && index <= tasks.size()) {
                 tasks.erase(tasks.begin() + index - 1);
-                cout << "\n Task removed!\n" << endl;
+                std::cout << "\n Task removed!\n" << std::endl;
             }
         }
         else if (choice == 4) {
