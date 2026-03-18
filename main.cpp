@@ -5,26 +5,22 @@
 #include <iostream>
 #include <cstdlib>
 #include "ToDoList.h"
-using namespace std;
+
 int main() {
     toDoList();
     int guess;
     srand(time(0));
-    int secret = rand() % 10+1;
-    cout << "Guess a number!" << endl;
+    int secret = rand() % 10 + 1;
+    std::cout << "Guess a number!" << std::endl;
     while (guess != secret) {
-        cin >> guess;
+        std::cin >> guess;
         if (guess == secret) {
-            cout << "Correct!" << endl;
-        }
-        else if (guess > secret) {
-            cout << "Too high" << endl;
-        }
-        else if (guess < secret) {
-            cout << "Too low" << endl;
+            std::cout << "Correct!" << std::endl;
+        } else if (guess > secret) {
+            std::cout << "Too high" << std::endl;
+        } else if (guess < secret) {
+            std::cout << "Too low" << std::endl;
         }
     }
-
-
     return 0;
 }
