@@ -4,10 +4,13 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "FileManager.h"
 
 
 void toDoList() {
     std::vector<std::string> tasks;
+    loadTasks(tasks);
+
     int choice;
 
     while (true) {
@@ -34,6 +37,7 @@ void toDoList() {
             std::cin.ignore();
             getline(std::cin, task);
             tasks.push_back(task);
+            saveTasks(tasks);
             std::cout << "\n Task added." << std::endl;
 
         }
@@ -44,6 +48,7 @@ void toDoList() {
 
             if (index > 0 && index <= tasks.size()) {
                 tasks.erase(tasks.begin() + index - 1);
+                saveTasks(tasks);
                 std::cout << "\n Task removed!\n" << std::endl;
             }
         }
